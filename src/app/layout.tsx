@@ -1,9 +1,10 @@
 import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";
-
 import { TRPCReactProvider } from "~/trpc/react";
 import { cn } from "~/lib/utils";
+import Navbar from "~/components/common/Navbar";
+import TailwindIndicator from "~/components/common/TailwindIndicator";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,8 +29,10 @@ export default function RootLayout({
       >
         <TRPCReactProvider>
           <main className="relative flex min-h-screen flex-col">
+            <Navbar />
             <div className="flex-1 flex-grow">{children}</div>
           </main>
+          <TailwindIndicator />
         </TRPCReactProvider>
       </body>
     </html>
