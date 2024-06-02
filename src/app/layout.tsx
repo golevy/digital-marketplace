@@ -5,6 +5,7 @@ import { TRPCReactProvider } from "~/trpc/react";
 import { cn } from "~/lib/utils";
 import Navbar from "~/components/common/Navbar";
 import TailwindIndicator from "~/components/common/TailwindIndicator";
+import AuthProvider from "~/components/providers/AuthProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,11 +29,13 @@ export default function RootLayout({
         className={cn("relative h-full font-sans antialiased", inter.className)}
       >
         <TRPCReactProvider>
-          <main className="relative flex min-h-screen flex-col">
-            <Navbar />
-            <div className="flex-1 flex-grow">{children}</div>
-          </main>
-          <TailwindIndicator />
+          <AuthProvider>
+            <main className="relative flex min-h-screen flex-col">
+              <Navbar />
+              <div className="flex-1 flex-grow">{children}</div>
+            </main>
+            <TailwindIndicator />
+          </AuthProvider>
         </TRPCReactProvider>
       </body>
     </html>
